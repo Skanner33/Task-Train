@@ -14,15 +14,20 @@ class TodosController < ApplicationController
   def update
     todo = user.todos.find(params[:id]).update(todo_params)
     if todo
-      app_response(data: { info: 'updated todo successfully' })
+      app_response(data: { info: "updated todo successfully" })
     else
-      app_response(message: 'failed', data: { info: "somethimg went wrong could not update todo" })
+      app_response(message: "failed", data: { info: "somethimg went wrong could not update todo" })
     end
   end
 
   def destroy
     todo = user.todos.find(params[:id]).destroy
-    app_response(message: 'success', data: {info: 'deleted todos successfully' }, status: 204)
+    app_response(message: "success", data: { info: "deleted todos successfully" }, status: 204)
+  end
+
+  def index
+    todos = user.todos.all
+    app_response(message: 'success', data: todos)
   end
 
   def invalid_priority

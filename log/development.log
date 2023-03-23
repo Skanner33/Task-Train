@@ -516,3 +516,19 @@ Completed 404 Not Found in 6ms (ActiveRecord: 0.3ms | Allocations: 1416)
 ActiveRecord::RecordNotFound (Couldn't find Todo with 'id'=3 [WHERE "todos"."user_id" = ?]):
   
 app/controllers/todos_controller.rb:24:in `destroy'
+Started GET "/todos" for 127.0.0.1 at 2023-03-23 13:08:58 +0300
+Processing by TodosController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `user'
+Completed 200 OK in 16ms (Views: 0.2ms | ActiveRecord: 1.4ms | Allocations: 9697)
+
+
+Started GET "/todos" for 127.0.0.1 at 2023-03-23 13:10:10 +0300
+Processing by TodosController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `user'
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."user_id" = ?[0m  [["user_id", 3]]
+  ↳ app/controllers/application_controller.rb:5:in `app_response'
+Completed 200 OK in 18ms (Views: 2.0ms | ActiveRecord: 1.4ms | Allocations: 10255)
+
+
