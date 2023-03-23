@@ -20,6 +20,11 @@ class TodosController < ApplicationController
     end
   end
 
+  def destroy
+    todo = user.todos.find(params[:id]).destroy
+    app_response(message: 'success', data: {info: 'deleted todos successfully' }, status: 204)
+  end
+
   def invalid_priority
     app_response(message: "failed", data: { info: "invalid priority" }, status: :unprocessable_entity)
   end
