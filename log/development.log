@@ -430,3 +430,57 @@ Processing by TodosController#create as */*
 Completed 422 Unprocessable Entity in 18ms (Views: 0.2ms | ActiveRecord: 2.1ms | Allocations: 6052)
 
 
+Started PUT "/todos/1" for 127.0.0.1 at 2023-03-23 12:54:19 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TodosController#update as */*
+  Parameters: {"priority"=>"MEDIUM", "id"=>"1", "todo"=>{"priority"=>"MEDIUM"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `user'
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."user_id" = ? AND "todos"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/todos_controller.rb:15:in `update'
+Completed 404 Not Found in 88ms (ActiveRecord: 2.5ms | Allocations: 43620)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Todo with 'id'=1 [WHERE "todos"."user_id" = ?]):
+  
+app/controllers/todos_controller.rb:15:in `update'
+Started POST "/users/login" for 127.0.0.1 at 2023-03-23 12:54:30 +0300
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"kings", "password"=>"[FILTERED]", "user"=>{"username"=>"kings"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: login, request: #<ActionDispatch::Request:0x00007f1acc8a7198>, params: {"username"=>"kings", "password"=>"[FILTERED]", "controller"=>"users", "action"=>"login", "user"=>{"username"=>"kings"}} }[0m
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: login, request: #<ActionDispatch::Request:0x00007f1acc8a7198>, params: {"username"=>"kings", "password"=>"[FILTERED]", "controller"=>"users", "action"=>"login", "user"=>{"username"=>"kings"}} }[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username = 'kings' OR email = NULL) ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16:in `login'
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: login, request: #<ActionDispatch::Request:0x00007f1acc8a7198>, params: {"username"=>"kings", "password"=>"[FILTERED]", "controller"=>"users", "action"=>"login", "user"=>{"username"=>"kings"}} }[0m
+Completed 200 OK in 278ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 1631)
+
+
+Started PUT "/todos/1" for 127.0.0.1 at 2023-03-23 12:54:35 +0300
+Processing by TodosController#update as */*
+  Parameters: {"priority"=>"MEDIUM", "id"=>"1", "todo"=>{"priority"=>"MEDIUM"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `user'
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."user_id" = ? AND "todos"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/todos_controller.rb:15:in `update'
+Completed 404 Not Found in 7ms (ActiveRecord: 0.3ms | Allocations: 1433)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Todo with 'id'=1 [WHERE "todos"."user_id" = ?]):
+  
+app/controllers/todos_controller.rb:15:in `update'
+Started PUT "/todos/2" for 127.0.0.1 at 2023-03-23 12:54:55 +0300
+Processing by TodosController#update as */*
+  Parameters: {"priority"=>"MEDIUM", "id"=>"2", "todo"=>{"priority"=>"MEDIUM"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `user'
+  [1m[36mTodo Load (0.4ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."user_id" = ? AND "todos"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/todos_controller.rb:15:in `update'
+Completed 404 Not Found in 8ms (ActiveRecord: 0.6ms | Allocations: 1432)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Todo with 'id'=2 [WHERE "todos"."user_id" = ?]):
+  
+app/controllers/todos_controller.rb:15:in `update'
